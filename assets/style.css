@@ -1,0 +1,345 @@
+/* ---------------------------------------------------------------
+   Design system: drafting-table blueprint.
+   Dark = cyanotype print (white ink on blueprint blue).
+   Light = blueline print (blue ink on drafting paper).
+   Both are real historical print processes for the same drawing —
+   not an inverted palette, an alternate print of it.
+   ------------------------------------------------------------- */
+
+:root {
+  --blueprint: #14395c;
+  --blueprint-deep: #0c283f;
+  --ink: #eef4f9;
+  --grid-line: #2b567f;
+  --accent: #e8a54c;
+  --accent-ink: #1a1206;
+  --muted: #9fb7cc;
+  --rule: #33608a;
+  --font-display: "Futura", "Century Gothic", "Avenir Next Condensed", "Bahnschrift", "Trebuchet MS", sans-serif;
+  --font-body: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Consolas", monospace;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --blueprint: #eef0ea;
+    --blueprint-deep: #e2e5dd;
+    --ink: #14395c;
+    --grid-line: #c9d3d0;
+    --accent: #a8631f;
+    --accent-ink: #fff8ec;
+    --muted: #5c7690;
+    --rule: #b7c4c9;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 31px, var(--grid-line) 31px, var(--grid-line) 32px),
+    repeating-linear-gradient(90deg, transparent, transparent 31px, var(--grid-line) 31px, var(--grid-line) 32px),
+    var(--blueprint);
+  background-attachment: fixed;
+  opacity: 1;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* grid lines should read faint, not literal */
+body { position: relative; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: inherit;
+  opacity: 1;
+  z-index: -1;
+}
+
+a { color: inherit; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------------- nav ---------------- */
+.sitenav {
+  border-bottom: 1px solid var(--rule);
+  padding: 22px 0;
+}
+.sitenav .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.sitenav .brand {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+}
+.sitenav .brand b { color: var(--accent); }
+.sitenav .links {
+  display: flex;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.sitenav .links a { text-decoration: none; border-bottom: 1px solid transparent; }
+.sitenav .links a:hover { border-bottom-color: var(--accent); }
+
+/* ---------------- title block (architectural drawing convention) ---------------- */
+.titleblock {
+  border: 1px solid var(--rule);
+  padding: 28px 30px;
+  margin: 40px 0 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: end;
+}
+.titleblock h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4.4vw, 44px);
+  letter-spacing: 0.01em;
+  margin: 0 0 10px;
+  text-wrap: balance;
+}
+.titleblock .role {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.titleblock .stamp {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-align: right;
+  color: var(--muted);
+  border-left: 1px solid var(--rule);
+  padding-left: 20px;
+  line-height: 1.9;
+  white-space: nowrap;
+}
+.titleblock .stamp b { color: var(--ink); font-weight: 600; }
+
+/* ---------------- eyebrow / labels ---------------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 0.01em;
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+
+section.block {
+  padding: 36px 0;
+  border-top: 1px solid var(--rule);
+}
+
+p { max-width: 65ch; }
+.lede {
+  font-size: 19px;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+/* ---------------- sheet index (project cards) ---------------- */
+.sheet-index {
+  display: grid;
+  gap: 18px;
+}
+.sheet {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  border: 1px solid var(--rule);
+  padding: 22px 26px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.sheet:hover { border-color: var(--accent); }
+@media (prefers-reduced-motion: no-preference) {
+  .sheet:hover { transform: translateX(2px); }
+}
+.sheet .sheet-no {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.sheet .sheet-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+.sheet .sheet-desc {
+  color: var(--muted);
+  font-size: 14.5px;
+  margin: 0;
+}
+.sheet .sheet-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .sheet { grid-template-columns: 1fr; gap: 8px; }
+  .sheet .sheet-meta { text-align: left; }
+  .titleblock { grid-template-columns: 1fr; }
+  .titleblock .stamp { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 14px; text-align: left; }
+}
+
+/* ---------------- specification schedule (tech stack table) ---------------- */
+.schedule {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+}
+.schedule th, .schedule td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.schedule th {
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.schedule-wrap { overflow-x: auto; border: 1px solid var(--rule); }
+
+/* ---------------- accomplishments ---------------- */
+.marks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.marks li {
+  padding-left: 24px;
+  position: relative;
+}
+.marks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid var(--accent);
+  transform: rotate(45deg);
+}
+
+/* ---------------- diagram (blueprint linework) ---------------- */
+.diagram {
+  border: 1px solid var(--rule);
+  padding: 26px;
+  overflow-x: auto;
+}
+.diagram-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  min-width: max-content;
+}
+.flow + .flow { margin-top: 14px; }
+.node {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  border: 1px solid var(--rule);
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+.node.accent { border-color: var(--accent); color: var(--accent); }
+.flow-arrow { color: var(--muted); font-size: 13px; }
+
+/* ---------------- footer ---------------- */
+.sitefoot {
+  border-top: 1px solid var(--rule);
+  padding: 30px 0 60px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ---------------- button ---------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  color: var(--accent-ink);
+  background: var(--accent);
+  padding: 10px 18px;
+  border: 1px solid var(--accent);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rule);
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--muted);
+  display: inline-block;
+  margin-bottom: 24px;
+}
+.back-link:hover { color: var(--accent); }

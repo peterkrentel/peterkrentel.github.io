@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>American Airlines — Peter Krentel</title>
+<meta name="description" content="Multi-cloud architecture and cost analysis, backed by working AKS/EKS proofs of concept." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314395c'/%3E%3Crect x='6' y='6' width='20' height='20' fill='none' stroke='%23eef4f9' stroke-width='2'/%3E%3Cline x1='16' y1='6' x2='16' y2='26' stroke='%23eef4f9' stroke-width='1'/%3E%3Cline x1='6' y1='16' x2='26' y2='16' stroke='%23eef4f9' stroke-width='1'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="sitenav">
+  <div class="wrap">
+    <a class="brand" href="../index.html">PETER KRENTEL <b>/</b> PLATFORM ENGINEERING</a>
+    <div class="links">
+      <a href="../index.html">Work</a>
+      <a href="../assets/resume.pdf">Résumé</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <a class="back-link" href="../index.html">&larr; Back to work</a>
+
+  <div class="titleblock">
+    <div>
+      <h1>American Airlines</h1>
+      <div class="role">Cloud Platform Architect &amp; Technical Advisor &middot; American Airlines (via Umbrage)</div>
+    </div>
+    <div class="stamp">
+      SHEET: <b>A-03</b><br />
+      PLATFORM: <b>AWS &middot; Azure</b><br />
+      DATE: <b>Apr&ndash;Jun 2025</b>
+    </div>
+  </div>
+
+  <p class="lede">A multi-cloud platform recommendation for American Airlines, backed by working proofs of concept on both AWS and Azure rather than a slide-deck comparison.</p>
+
+  <section class="block">
+    <p class="eyebrow">The Challenge</p>
+    <h2>A decision that needed evidence, not opinions</h2>
+    <p>American Airlines needed to choose a cloud platform strategy for application modernization, and the executive review process required a defensible, line-item cost comparison — not vendor pricing pages restated as a recommendation.</p>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow">Solution Architecture</p>
+    <h2>Two working pilots, not two diagrams</h2>
+    <p>Rather than compare AWS and Azure on paper, I built a full-stack pilot &mdash; FastAPI backend and React frontend &mdash; deployed to Azure AKS via GitHub Actions, alongside a Terraform Cloud&ndash;provisioned AWS EKS environment. Paired both with a detailed TCO breakdown across compute, storage, networking, and operations so the final recommendation carried real numbers back to the executive review.</p>
+
+    <div class="diagram">
+      <p class="diagram-label">Multi-cloud evaluation (simplified)</p>
+      <div class="flow">
+        <span class="node accent">FastAPI + React</span><span class="flow-arrow">&rarr; GitHub Actions &rarr;</span>
+        <span class="node">Azure AKS</span>
+      </div>
+      <div class="flow">
+        <span class="node">Terraform Cloud</span><span class="flow-arrow">&rarr;</span>
+        <span class="node">AWS EKS</span>
+      </div>
+      <div class="flow">
+        <span class="node accent">both</span><span class="flow-arrow">&rarr;</span>
+        <span class="node">cost + feasibility comparison</span><span class="flow-arrow">&rarr;</span>
+        <span class="node">executive recommendation</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow">Specification Schedule</p>
+    <h2>Stack</h2>
+    <div class="schedule-wrap">
+      <table class="schedule">
+        <tr><th>Evaluated: AWS</th><td>EKS, EC2, VPC, RDS, S3, CloudWatch</td></tr>
+        <tr><th>Evaluated: Azure</th><td>AKS, VNet, Azure SQL, Blob Storage, Monitor</td></tr>
+        <tr><th>Pilot stack</th><td>FastAPI (Python), React, Docker</td></tr>
+        <tr><th>Automation</th><td>Terraform, Terraform Cloud, GitHub Actions, Azure DevOps</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow">Key Accomplishments</p>
+    <h2>Outcomes</h2>
+    <ul class="marks">
+      <li>Delivered working pilots on both AKS and EKS, not just architecture diagrams</li>
+      <li>Built a detailed TCO comparison spanning compute, storage, network, and operations</li>
+      <li>Presented findings to AA's architecture review board and engineering leadership</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <p class="eyebrow">Lessons Learned</p>
+    <h2>What held up</h2>
+    <p>A working pilot moved the conversation faster than any deck could &mdash; stakeholders could click through something real instead of taking a diagram on faith. Cost comparisons only land when broken down to line items people already recognize from their own budgets, not aggregated into a single number.</p>
+  </section>
+
+  <footer class="sitefoot">
+    <span><a class="back-link" href="../index.html" style="margin:0;">&larr; Back to work</a></span>
+    <span><a href="../assets/resume.pdf">Résumé (PDF)</a></span>
+  </footer>
+
+</div>
+
+</body>
+</html>
