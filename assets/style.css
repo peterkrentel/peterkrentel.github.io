@@ -39,27 +39,11 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background:
-    repeating-linear-gradient(0deg, transparent, transparent 31px, var(--grid-line) 31px, var(--grid-line) 32px),
-    repeating-linear-gradient(90deg, transparent, transparent 31px, var(--grid-line) 31px, var(--grid-line) 32px),
-    var(--blueprint);
-  background-attachment: fixed;
-  opacity: 1;
+  background: var(--blueprint);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 17px;
   line-height: 1.6;
-}
-
-/* grid lines should read faint, not literal */
-body { position: relative; }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: inherit;
-  opacity: 1;
-  z-index: -1;
 }
 
 a { color: inherit; }
@@ -343,3 +327,75 @@ p { max-width: 65ch; }
   margin-bottom: 24px;
 }
 .back-link:hover { color: var(--accent); }
+
+/* ---------------- rendered markdown content ---------------- */
+.md-content { padding-bottom: 20px; }
+.md-content h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  margin: 44px 0 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  text-wrap: balance;
+}
+.md-content h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.md-content h3 {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 28px 0 12px;
+}
+.md-content p { max-width: 68ch; color: var(--ink); }
+.md-content strong { color: var(--ink); }
+.md-content hr { border: none; border-top: 1px solid var(--rule); margin: 8px 0; }
+.md-content ul, .md-content ol { padding-left: 22px; max-width: 68ch; }
+.md-content li { margin-bottom: 8px; }
+.md-content a { color: var(--accent); text-decoration-color: var(--rule); }
+.md-content code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--blueprint-deep);
+  padding: 2px 5px;
+}
+.md-content pre {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--blueprint-deep);
+  border: 1px solid var(--rule);
+  padding: 16px 18px;
+  overflow-x: auto;
+}
+.md-content pre code { background: none; padding: 0; }
+.md-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin: 8px 0 24px;
+}
+.md-content th, .md-content td {
+  text-align: left;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.md-content th {
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.md-content .table-wrap { overflow-x: auto; }
+
+/* mermaid diagrams inherit the same drafting-sheet framing as everything else */
+.mermaid {
+  border: 1px solid var(--rule);
+  padding: 20px;
+  margin: 12px 0 28px;
+  overflow-x: auto;
+  background: var(--blueprint-deep);
+}
+.mermaid svg { max-width: 100%; }

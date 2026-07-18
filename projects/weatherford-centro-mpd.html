@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314395c'/%3E%3Crect x='6' y='6' width='20' height='20' fill='none' stroke='%23eef4f9' stroke-width='2'/%3E%3Cline x1='16' y1='6' x2='16' y2='26' stroke='%23eef4f9' stroke-width='1'/%3E%3Cline x1='6' y1='16' x2='26' y2='16' stroke='%23eef4f9' stroke-width='1'/%3E%3C/svg%3E" />
 <link rel="stylesheet" href="../assets/style.css" />
 </head>
-<body>
+<body data-doc="weatherford-centro-mpd">
 
 <nav class="sitenav">
   <div class="wrap">
@@ -36,68 +36,7 @@
     </div>
   </div>
 
-  <p class="lede">A production EKS platform for Weatherford's Centro MPD application, built on a reusable Terraform module library — the foundation later reused across other platform work.</p>
-
-  <section class="block">
-    <p class="eyebrow">The Challenge</p>
-    <h2>No reusable path to production</h2>
-    <p>Weatherford needed Centro MPD running on cloud-native infrastructure across dev, staging, and production, with enterprise-grade authentication and a CI/CD pipeline the engineering team could actually use — without requiring VDI access. Nothing about the environment provisioning process was repeatable, so every new environment meant rebuilding from scratch.</p>
-  </section>
-
-  <section class="block">
-    <p class="eyebrow">Solution Architecture</p>
-    <h2>A module library, not a one-off cluster</h2>
-    <p>Built a modular Terraform library — VPC, EKS, and supporting infrastructure — designed for replication rather than a single bespoke environment. Keycloak handles multi-tenant authentication; Sealed Secrets keeps encrypted secrets safely inside Git for a GitOps workflow. A custom Azure DevOps agent module let the pipeline run without VDI dependency. FluxCD reconciles every environment from Git via Kustomize/Helm overlays.</p>
-
-    <div class="diagram">
-      <p class="diagram-label">CI/CD &rarr; GitOps &rarr; cluster (simplified)</p>
-      <div class="flow">
-        <span class="node">ADO pipeline</span><span class="flow-arrow">&rarr;</span>
-        <span class="node">build &amp; push ECR</span><span class="flow-arrow">&rarr;</span>
-        <span class="node">promote dev &rarr; qa &rarr; prod</span><span class="flow-arrow">&rarr;</span>
-        <span class="node accent">FluxCD</span><span class="flow-arrow">&rarr;</span>
-        <span class="node">EKS cluster</span>
-      </div>
-      <div class="flow">
-        <span class="node">EKS cluster</span><span class="flow-arrow">&rarr;</span>
-        <span class="node">Keycloak auth</span>
-      </div>
-      <div class="flow">
-        <span class="node">EKS cluster</span><span class="flow-arrow">&rarr;</span>
-        <span class="node">Sealed Secrets</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <p class="eyebrow">Specification Schedule</p>
-    <h2>Stack</h2>
-    <div class="schedule-wrap">
-      <table class="schedule">
-        <tr><th>Infrastructure</th><td>AWS (EKS, EC2, VPC, IAM, ECR), Terraform (modular)</td></tr>
-        <tr><th>Security</th><td>Keycloak, Sealed Secrets, IAM &amp; Kubernetes RBAC</td></tr>
-        <tr><th>CI/CD</th><td>Azure DevOps (build/push), FluxCD (GitOps deploy)</td></tr>
-        <tr><th>Observability</th><td>Prometheus, Grafana, CloudWatch, FluentBit</td></tr>
-      </table>
-    </div>
-  </section>
-
-  <section class="block">
-    <p class="eyebrow">Key Accomplishments</p>
-    <h2>Outcomes</h2>
-    <ul class="marks">
-      <li>Environment provisioning cut from 2&ndash;3 weeks to 4&ndash;8 hours</li>
-      <li>Terraform module library reused directly on later platform work</li>
-      <li>Multi-tenant Keycloak authentication with Sealed Secrets for GitOps-safe secrets management</li>
-      <li>Custom Azure DevOps agent module removed VDI dependency for the engineering team</li>
-    </ul>
-  </section>
-
-  <section class="block">
-    <p class="eyebrow">Lessons Learned</p>
-    <h2>What held up</h2>
-    <p>Modular Terraform paid off almost immediately once a second environment needed provisioning. Deciding on Keycloak early avoided an authentication rework later. Documentation written alongside the build, not after it, is what let the pattern get picked up on other projects without me in the room.</p>
-  </section>
+  <div id="content" class="md-content">Loading&hellip;</div>
 
   <footer class="sitefoot">
     <span><a class="back-link" href="../index.html" style="margin:0;">&larr; Back to work</a></span>
@@ -105,6 +44,10 @@
   </footer>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script src="../assets/render.js"></script>
 
 </body>
 </html>

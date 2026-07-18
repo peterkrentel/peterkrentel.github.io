@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2314395c'/%3E%3Crect x='6' y='6' width='20' height='20' fill='none' stroke='%23eef4f9' stroke-width='2'/%3E%3Cline x1='16' y1='6' x2='16' y2='26' stroke='%23eef4f9' stroke-width='1'/%3E%3Cline x1='6' y1='16' x2='26' y2='16' stroke='%23eef4f9' stroke-width='1'/%3E%3C/svg%3E" />
 <link rel="stylesheet" href="../assets/style.css" />
 </head>
-<body>
+<body data-doc="weatherford-historian">
 
 <nav class="sitenav">
   <div class="wrap">
@@ -36,64 +36,7 @@
     </div>
   </div>
 
-  <p class="lede">Migrated Weatherford's Historian application off hand-applied Kubernetes manifests and onto a standardized, GitOps-managed platform — and left the Weatherford team able to run it themselves.</p>
-
-  <section class="block">
-    <p class="eyebrow">The Challenge</p>
-    <h2>8+ services, no shared pattern</h2>
-    <p>Historian's microservices were each deployed with their own hand-applied manifests, no two quite alike. Deployments were manual and error-prone, observability was thin, and the Weatherford team had a real gap in Kubernetes and GitOps experience — anything built here had to be simple enough for them to inherit.</p>
-  </section>
-
-  <section class="block">
-    <p class="eyebrow">Solution Architecture</p>
-    <h2>Standardize, then hand it to Git</h2>
-    <p>Converted every service to a standardized Helm chart, then put FluxCD in charge of deployment so Git became the single source of truth — drift gets detected and reconciled automatically instead of chased down manually. Layered Prometheus, Grafana, and AWS Container Insights on top for observability across dev, QA, staging, and production. Ran a four-week hands-on training program so the Weatherford team could operate the platform without escalating every change back to Umbrage.</p>
-
-    <div class="diagram">
-      <p class="diagram-label">GitOps workflow (simplified)</p>
-      <div class="flow">
-        <span class="node">git commit</span><span class="flow-arrow">&rarr;</span>
-        <span class="node accent">FluxCD</span><span class="flow-arrow">&rarr;</span>
-        <span class="node">detect drift</span><span class="flow-arrow">&rarr;</span>
-        <span class="node">helm upgrade</span><span class="flow-arrow">&rarr;</span>
-        <span class="node">EKS cluster</span>
-      </div>
-      <div class="flow">
-        <span class="node">legacy kubectl manifests</span><span class="flow-arrow">&#8674; standardized to &#8674;</span>
-        <span class="node accent">Helm + Flux</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <p class="eyebrow">Specification Schedule</p>
-    <h2>Stack</h2>
-    <div class="schedule-wrap">
-      <table class="schedule">
-        <tr><th>Infrastructure</th><td>AWS EKS 1.28+, Terraform (module patterns shared with Centro MPD)</td></tr>
-        <tr><th>Deployment</th><td>Helm 3, FluxCD, Amazon ECR</td></tr>
-        <tr><th>Observability</th><td>Prometheus, Grafana, AWS Container Insights, AlertManager</td></tr>
-        <tr><th>Data</th><td>Amazon RDS, automated snapshot backups</td></tr>
-      </table>
-    </div>
-  </section>
-
-  <section class="block">
-    <p class="eyebrow">Key Accomplishments</p>
-    <h2>Outcomes</h2>
-    <ul class="marks">
-      <li>8+ microservices converted to standardized Helm charts</li>
-      <li>Deployment time cut from 2&ndash;4 hours to 30&ndash;45 minutes</li>
-      <li>Deployment failure rate down from 20&ndash;30% to under 5%</li>
-      <li>Weatherford team now handles 60&ndash;70% of requests independently</li>
-    </ul>
-  </section>
-
-  <section class="block">
-    <p class="eyebrow">Lessons Learned</p>
-    <h2>What held up</h2>
-    <p>Standardizing on Helm first made every service after the first one faster to onboard. Migrating stateful workloads needed custom handling that no template covers. FluxCD's learning curve was real — the training program is what actually made GitOps stick with the team, not the documentation alone.</p>
-  </section>
+  <div id="content" class="md-content">Loading&hellip;</div>
 
   <footer class="sitefoot">
     <span><a class="back-link" href="../index.html" style="margin:0;">&larr; Back to work</a></span>
@@ -101,6 +44,10 @@
   </footer>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script src="../assets/render.js"></script>
 
 </body>
 </html>
