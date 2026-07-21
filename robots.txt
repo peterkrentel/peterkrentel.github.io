@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://peterkrentel.github.io/sitemap.xml
